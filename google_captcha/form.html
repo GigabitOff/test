@@ -1,0 +1,22 @@
+<html lang="ru">
+<head>
+    <title>Google reCAPTCHA</title>
+    <meta charset="utf-8">
+    <script src='https://www.google.com/recaptcha/api.js?render=6LcRTi8aAAAAAMEzgMlYhQxdAx9PREbu6G5IHzds'></script>
+</head>
+    
+<body>
+    <form method="POST" action="verify_captcha.php">
+        <p>Введите комментарий:</p>
+        <p><textarea name="comment" rows="2" cols="40"></textarea></p>
+        <input id="token" type="hidden" name="token">
+        <p><input type="submit" value="Отправить"></p>
+    </form>
+    <script>
+        grecaptcha.ready(function() {
+            grecaptcha.execute('6LcRTi8aAAAAAMEzgMlYhQxdAx9PREbu6G5IHzds', {action: 'homepage'}).then(function(token) {
+                document.getElementById('token').value = token
+            });
+        });
+</script>
+</body>
